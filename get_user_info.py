@@ -4,57 +4,57 @@ import json
 from old_info import kols
 
 # 摁chrome浏览器
-link_num = 137
+link_num = 4000
 link_num_end = len(kols)
 link_num_str = ""
 action_list = [
     {
         "name":"摁chrome浏览器",
-        "x":618,
-        "y":800 - 25,
+        "x":9,
+        "y":9,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"摁pgy tab",
-        "x":120,
-        "y":800 - 750,
+        "x":105,
+        "y":20,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"摁地址栏",
-        "x":400,
-        "y":800 - 715,
+        "x":370,
+        "y":58,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"输入网址",
-        "x":400,
-        "y":800 - 715,
+        "x":370,
+        "y":58,
         "action":"input_link",
-        "sleep": 15
+        "sleep": 10
     },
     {
         "name":"点击userId",
-        "x":673,
-        "y":800 - 635,
+        "x":631,
+        "y":180,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"输入userId",
-        "x":673,
-        "y":800 - 635,
+        "x":631,
+        "y":184,
         "action":"input_link_userid",
         "sleep": 2
     },
     
     {
         "name":"点击network内容",
-        "x":707,
-        "y":800 - 483,
+        "x":602,
+        "y":349,
         # "x":721,
         # "y":800 - 441,
         "action":"move_and_click",
@@ -62,43 +62,43 @@ action_list = [
     },
     {
         "name":"点击response",
-        "x":1112,
-        "y":800 - 471,
+        "x":1080,
+        "y":362,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"复制response",
-        "x":1083,
-        "y":800 - 453,
+        "x":1080,
+        "y":362,
         "action":"move_and_click_and_copy",
         "sleep": 1
     },
     {
         "name":"摁qsh page pgy tab",
-        "x":592,
-        "y":800 - 751,
+        "x":300,
+        "y":28,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"摁输入框",
-        "x":187,
-        "y":800 - 606,
+        "x":50,
+        "y":210,
         "action":"move_and_click_and_paste",
         "sleep": 2
     },
     {
         "name":"摁输入框 提交",
-        "x":230,
-        "y":800 - 522,
+        "x":87,
+        "y":285,
         "action":"move_and_click",
         "sleep": 1
     },
     {
         "name":"更新link num",
-        "x":673,
-        "y":800 - 635,
+        "x":87,
+        "y":285,
         "action":"update_link_num",
         "sleep": 0
     },
@@ -121,20 +121,20 @@ def do_one():
         elif action_now in ["input_link_userid"]:
             pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
             pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
-            pyautogui.hotkey("command", "a")
+            pyautogui.hotkey("ctrl", "a")
             link_num_str = kols[link_num]["userId"]
             pyautogui.typewrite(link_num_str)
             pyautogui.press('enter')
         elif action_now in ["move_and_click_and_copy"]:
             pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
             pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
-            pyautogui.hotkey("command", "a")
-            pyautogui.hotkey("command", "c")
+            pyautogui.hotkey("ctrl", "a")
+            pyautogui.hotkey("ctrl", "c")
         elif action_now in ["move_and_click_and_paste"]:
             pyautogui.moveTo(x=action.get("x",None), y=action.get("y",None),duration=0, tween=pyautogui.linear)
             time.sleep(2)
             pyautogui.click(x=action.get("x",None), y=action.get("y",None),clicks=1, button='left')
-            pyautogui.hotkey("command", "v")
+            pyautogui.hotkey("ctrl", "v")
         elif action_now in ["update_link_num"]:
             link_num = link_num + 1
         time.sleep(action.get("sleep",0))
